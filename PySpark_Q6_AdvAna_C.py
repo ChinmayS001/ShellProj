@@ -29,8 +29,8 @@ def DateClean(col):
 spark.udf.register("CleanDatee", DateClean, StringType())
 
 
-dateFormatted = spark.sql("with newTB as (select * from Engagement where PlaybackStarted like '%/%/%' and " \
-"PlaybackStopped like '%/%/%') select UserID,ShowID,cleanDatee(PlaybackStarted) PStart,cleanDatee(PlaybackStopped) " \
+dateFormatted = spark.sql("with newTB as (select * from Engagement where PlaybackStarted like '%/%/%' and "
+"PlaybackStopped like '%/%/%') select UserID,ShowID,cleanDatee(PlaybackStarted) PStart,cleanDatee(PlaybackStopped)"
 "PStop,CompletionPercent from newTB")
 dateFormatted.createOrReplaceTempView("EngagementFormatted");
 
